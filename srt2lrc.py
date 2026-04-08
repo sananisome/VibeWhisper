@@ -37,11 +37,16 @@ def srt2lrc(input_file):
 
     lrc_lines = []
     lrc_time = None
+    text_parts = []
     output_file = '.'.join(input_file.split('.')[:-1]) + '.lrc'
 
     for ln in range(len(lines)):
         line = lines[ln]
         if re.match(r'-?\d\d:\d\d:\d\d', line):
+            # flush previous subtitle entry
+            if lrc_time and text_parts:
+                lrc_lines.append(lrc_time + ' '.join(text_parts))
+                text_parts = []
             # parse start time from "HH:MM:SS,mmm --> HH:MM:SS,mmm"
             time_part = line.split('-->')[0].strip().replace('-0', '0')
             match = re.match(r'(\d+):(\d{2}):(\d{2})[,.](\d{2,3})', time_part)
@@ -50,12 +55,17 @@ def srt2lrc(input_file):
                 total_min = int(h) * 60 + int(m)
                 cs = ms[:2]  # centiseconds (first 2 digits)
                 lrc_time = f"[{total_min:02d}:{s}.{cs}]"
+            else:
+                lrc_time = None
         elif line.isdigit():
             continue
         else:
             if lrc_time:
-                lrc_lines.append(lrc_time + line)
-                lrc_time = None
+                text_parts.append(line)
+
+    # flush last entry
+    if lrc_time and text_parts:
+        lrc_lines.append(lrc_time + ' '.join(text_parts))
 
     output_str = '\n'.join(lrc_lines) + '\n'
     output_str = output_str.encode('utf8')

@@ -54,7 +54,7 @@ def srt2ass(input_file,sub_style, is_split, split_method):
 
     for ln in range(len(lines)):
         line = lines[ln]
-        if line.isdigit() and re.match('-?\d\d:\d\d:\d\d', lines[(ln+1)]):
+        if line.isdigit() and ln + 1 < len(lines) and re.match('-?\d\d:\d\d:\d\d', lines[(ln+1)]):
             if dlgLines:
                 subLines += dlgLines + "\n"
             dlgLines = ''
@@ -120,18 +120,15 @@ def srt2ass(input_file,sub_style, is_split, split_method):
     # subLines = re.sub(r'<font\s+color="?#(\w{2})(\w{2})(\w{2})"?>', "{\\\\c&H\\3\\2\\1&}", subLines)
     # subLines = re.sub(r'</font>', "", subLines)
 
-    if sub_style == 'default':
-        head_name = 'head_str_default'
-    elif sub_style == 'ikedaCN':
-        head_name = 'head_str_ikeda'
-    elif sub_style == 'sugawaraCN':
-        head_name = 'head_str_sugawara'
-    elif sub_style == 'kaedeCN':
-        head_name = 'head_str_kaede'
-    elif sub_style == "taniguchiCN":
-        head_name = 'head_str_taniguchi'
-    elif sub_style == 'asukaCN':
-        head_name = 'head_str_asuka'
+    style_map = {
+        'default': 'head_str_default',
+        'ikedaCN': 'head_str_ikeda',
+        'sugawaraCN': 'head_str_sugawara',
+        'kaedeCN': 'head_str_kaede',
+        'taniguchiCN': 'head_str_taniguchi',
+        'asukaCN': 'head_str_asuka',
+    }
+    head_name = style_map.get(sub_style, 'head_str_default')
 
     head_str = STYLE_DICT.get(head_name)
     output_str = utf8bom + head_str + '\n' + subLines
