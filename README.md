@@ -11,7 +11,13 @@ The output file will be in Advanced SubStation Alpha(ass) format with built-in s
 
 ## What's Latest：
 
-**This project will NO LONGER be maintained. Thanks for all your support.**
+2026.4.8:
+* Add support for LRC (lyrics) subtitle format output. Enable in Required settings or select in translation output format.
+
+2026.4.7:
+* Add support for [ChickenRice-v2](https://github.com/TransWithAI/Faster-Whisper-TransWithAI-ChickenRice) model, optimized for Japanese-to-Chinese translation.
+* Add [Whisper-VAD (TransWithAI)](https://github.com/TransWithAI/whisper-vad) as alternative VAD option, a Whisper encoder based VAD model, potentially better for Japanese.
+* Added VAD type selector in Advanced settings: Silero (default) or Whisper-VAD.
 
 2024.4.17:
 * Add option to use Google Gemini API for translation.
@@ -65,6 +71,14 @@ After split:
 >Dialogue: 0,0:01:00.52,0:01:17.52,default,,0,0,0,,ろしくお願いします(adjust_required)
 
 ## Update history：
+
+2026.4.8:
+* Add support for LRC (lyrics) subtitle format output.
+
+2025.4.7:
+* Add support for ChickenRice-v2 model, optimized for Japanese-to-Chinese translation.
+* Add Whisper-VAD (TransWithAI) as alternative VAD option, a Whisper encoder based VAD model.
+* Added VAD type selector in Advanced settings: Silero (default) or Whisper-VAD.
 
 2023.4.30:
 * Refine the translation prompt.

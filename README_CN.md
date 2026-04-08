@@ -9,7 +9,14 @@ N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂4
 应用输出文件为ass或srt格式，内置指定字幕组的字幕格式，可直接导入 [Aegisub](https://github.com/Aegisub/Aegisub) 进行后续翻译及时间轴校正。
 
 ## 最近更新:
-**本项目将不再进行维护和更新，感谢大家的帮助和支持。**
+
+2026.4.8:
+* 新增支持 LRC 歌词格式字幕输出。可在通用参数中启用导出，或在翻译输出格式中选择。
+
+2026.4.7:
+* 新增支持 [ChickenRice-v2](https://github.com/TransWithAI/Faster-Whisper-TransWithAI-ChickenRice) 模型，专为日语→中文翻译优化。
+* 新增支持 [Whisper-VAD (TransWithAI)](https://github.com/TransWithAI/whisper-vad) 作为VAD备选，基于Whisper编码器训练的VAD模型，可能对日语效果更好。
+* 高级设置中新增VAD类型选择：Silero（默认）或 Whisper-VAD。
 
 2024.4.17:
 * 添加使用Google Gemini API翻译的选项。
@@ -74,6 +81,14 @@ N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂4
 
 ## 更新日志
 
+2026.4.8:
+* 新增支持 LRC 歌词格式字幕输出。
+
+2025.4.7:
+* 新增支持 ChickenRice-v2 模型，专为日语→中文翻译优化。
+* 新增支持 Whisper-VAD (TransWithAI) 作为VAD备选，基于Whisper编码器训练的VAD模型。
+* 高级设置中新增VAD类型选择：Silero（默认）或 Whisper-VAD。
+
 2023.4.30:
 * 优化提示词
 * 允许用户使用个人提示词并调节Temperature参数
@@ -83,6 +98,7 @@ N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂4
 * 使用faster-whisper模型重新部署以提高效率，节省资源
 * 提供faster-whisper集成的vad filter选项以提高转录精度
   
+
 2023.4.10:
 * 支持选择/上传多个文件以批量转录。
 
