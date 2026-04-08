@@ -1,5 +1,54 @@
 # 开发修改记录 / Development Changelog
 
+## 2026.4.8 — 项目重命名 & 代码拆分 & Bug 修复
+
+### 修改目的
+
+1. 项目从 N46Whisper 重命名为 VibeWhisper，仓库迁移至 `sananisome/VibeWhisper`
+2. 将 `srt2lrc` 拆分为独立文件，解耦与 `srt2ass.py` 的关系
+3. 修复代码审查中发现的多个 bug
+
+### 修改文件及内容
+
+#### 1. 新增 `srt2lrc.py`
+
+- 从 `srt2ass.py` 中提取 `srt2lrc()` 函数为独立模块
+- 自带 `fileopen()` 辅助函数，不再依赖 `srt2ass.py`
+- 使用标准库 `re` 替代第三方 `regex`，减少依赖
+- **修复多行字幕丢失 bug**：SRT 中一条字幕包含多行文本时，旧逻辑只保留第一行，现在会合并所有文本行
+
+#### 2. `srt2ass.py`
+
+- 移除 `srt2lrc()` 函数（已迁移至 `srt2lrc.py`）
+- **修复越界 bug**：当 SRT 文件最后一行为纯数字时，`lines[ln+1]` 会触发 `IndexError`，新增 `ln + 1 < len(lines)` 边界检查
+- **修复未知 style 崩溃 bug**：当 `sub_style` 不在预设列表中时，`head_name` 未被赋值导致 `NameError`，现在 fallback 到 `default`
+
+#### 3. `N46Whisper_v26.04.08.ipynb`
+
+- `srt2ass.py` 下载地址更新为 `sananisome/VibeWhisper`，移除旧的 PAT token
+- 新增下载 `srt2lrc.py`
+- **Cell 8**：import 改为 `from srt2ass import srt2ass` + `from srt2lrc import srt2lrc`
+- **Cell 9（ChatGPT 翻译）**：`from srt2ass import srt2lrc` → `from srt2lrc import srt2lrc`
+- **Cell 10（Gemini 翻译）**：同上
+
+#### 4. `README.md` / `README_CN.md`
+
+- 标题从 `N46Whisper` 改为 `VibeWhisper`
+- 项目简介更新，不再局限于坂道系字幕组
+- 输出格式说明新增 LRC
+- Colab 链接更新指向 `sananisome/VibeWhisper`
+
+### Bug 修复汇总
+
+| Bug | 文件 | 影响 | 修复方式 |
+|-----|------|------|----------|
+| Cell 9/10 `from srt2ass import srt2lrc` 找不到函数 | notebook | 翻译后导出 LRC 必崩 | 改为 `from srt2lrc import srt2lrc` |
+| SRT 末尾纯数字行导致 `IndexError` | srt2ass.py:57 | 特定 SRT 文件转 ASS 崩溃 | 加边界检查 |
+| 多行字幕只保留第一行 | srt2lrc.py | LRC 输出丢失内容 | 收集所有文本行再合并 |
+| 未知 sub_style 导致 `NameError` | srt2ass.py:135 | 自定义 style 时崩溃 | fallback 到 default |
+
+---
+
 ## 2026.4.7 — 新增 LRC 歌词格式字幕输出
 
 ### 修改目的

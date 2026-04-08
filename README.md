@@ -12,7 +12,9 @@ The output file will be in Advanced SubStation Alpha (ASS) or LRC format with bu
 ## What's Latest：
 
 2026.4.8:
-* Add support for LRC (lyrics) subtitle format output. Enable in Required settings or select in translation output format.
+* Rebrand project from N46Whisper to VibeWhisper.
+* Separate srt2lrc into standalone module.
+* Fix multiple bugs: IndexError on trailing digits in SRT, multi-line subtitle loss in LRC, undefined style fallback, broken imports in translation cells.
 
 2026.4.7:
 * Add support for [ChickenRice-v2](https://github.com/TransWithAI/Faster-Whisper-TransWithAI-ChickenRice) model, optimized for Japanese-to-Chinese translation.
@@ -73,7 +75,7 @@ After split:
 ## Update history：
 
 2026.4.8:
-* Add support for LRC (lyrics) subtitle format output.
+* Rebrand project to VibeWhisper. Separate srt2lrc module. Fix multiple bugs.
 
 2025.4.7:
 * Add support for ChickenRice-v2 model, optimized for Japanese-to-Chinese translation.
