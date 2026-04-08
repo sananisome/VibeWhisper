@@ -46,6 +46,7 @@
 | SRT 末尾纯数字行导致 `IndexError` | srt2ass.py:57 | 特定 SRT 文件转 ASS 崩溃 | 加边界检查 |
 | 多行字幕只保留第一行 | srt2lrc.py | LRC 输出丢失内容 | 收集所有文本行再合并 |
 | 未知 sub_style 导致 `NameError` | srt2ass.py:135 | 自定义 style 时崩溃 | fallback 到 default |
+| 本地上传多文件只处理第一个 | notebook Cell 4 | 批量转录失效 | `file_names` 改为 `list(uploaded.keys())` |
 
 ---
 
