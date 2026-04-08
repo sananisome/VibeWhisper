@@ -36,7 +36,7 @@ The output file will be in Advanced SubStation Alpha (ASS) or LRC format with bu
 
 
 ## How to use
-* [Click here](https://colab.research.google.com/github/sananisome/VibeWhisper/blob/main/N46Whisper_v26.04.08.ipynb) to open the notebook in Google Colab.
+* [Click here](https://colab.research.google.com/github/sananisome/VibeWhisper/blob/main/VibeWhisper.ipynb) to open the notebook in Google Colab.
 * Upload file and follow the instruction to run the notebook.
 * The subtitle file will be automatically downloaded once done.
 
