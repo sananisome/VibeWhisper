@@ -1,12 +1,12 @@
-# N46Whisper
+# VibeWhisper
 
 Language : [English](./README.md)  | 简体中文
 
-N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂46（以及坂道系）字幕组的工作效率。但本应用亦适于所有日语视频的字幕制作。
+VibeWhisper（原 N46Whisper）是基于 Google Colab 的应用。开发初衷旨在提高乃木坂46（以及坂道系）字幕组的工作效率，但本应用亦适于所有视频的字幕制作。
 
-此应用基于AI语音识别模型 [Whisper](https://github.com/openai/whisper)的优化部署 [faster-whisper](https://github.com/guillaumekln/faster-whisper).
+此应用基于AI语音识别模型 [Whisper](https://github.com/openai/whisper) 的优化部署 [faster-whisper](https://github.com/guillaumekln/faster-whisper)。
 
-应用输出文件为ass或srt格式，内置指定字幕组的字幕格式，可直接导入 [Aegisub](https://github.com/Aegisub/Aegisub) 进行后续翻译及时间轴校正。
+应用输出文件为 ASS、SRT 或 LRC 格式，内置指定字幕组的字幕格式，可直接导入 [Aegisub](https://github.com/Aegisub/Aegisub) 进行后续翻译及时间轴校正。
 
 ## 最近更新:
 
@@ -22,7 +22,7 @@ N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂4
 * 添加使用Google Gemini API翻译的选项。
 
 2024.1.31:
-* 鉴于集成的参数选项（还会）越来越多有使流程变得繁琐的趋势，这有违开发初衷。因此测试分离了一个[轻量版](https://colab.research.google.com/github/Ayanaminn/N46Whisper/blob/dev/N46WhisperLite.ipynb)，只保留最少的必要操作。
+* 鉴于集成的参数选项（还会）越来越多有使流程变得繁琐的趋势，这有违开发初衷。因此测试分离了一个[轻量版](https://colab.research.google.com/github/sananisome/VibeWhisper/blob/dev/N46WhisperLite.ipynb)，只保留最少的必要操作。
 
 2023.12.4:
 * 支持基于faster-whisper的v3模型
@@ -33,7 +33,7 @@ N46Whisper 是基于 Google Colab 的应用。开发初衷旨在提高乃木坂4
 
 
 ## 如何使用
-* [点击这里](https://colab.research.google.com/github/Ayanaminn/N46Whisper/blob/main/N46Whisper.ipynb) 在Google Colab中打开应用.
+* [点击这里](https://colab.research.google.com/github/sananisome/VibeWhisper/blob/main/N46Whisper_v26.04.08.ipynb) 在Google Colab中打开应用。
 * 上传要识别的文件并运行应用
 * 识别完成后ass文件会自动下载到本地.
 
