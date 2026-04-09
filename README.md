@@ -11,6 +11,9 @@ The output file will be in Advanced SubStation Alpha (ASS) or LRC format with bu
 
 ## What's Latest：
 
+2026.4.9:
+* Fix batch upload: first file now correctly exports LRC/SRT when enabled.
+
 2026.4.8:
 * Rebrand project from N46Whisper to VibeWhisper.
 * Separate srt2lrc into standalone module.
