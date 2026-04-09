@@ -7,12 +7,14 @@
 #### 1. `VibeWhisper.ipynb` Cell 8
 
 - **修复首个文件忽略 export_lrc/export_srt 设置的 bug**：原逻辑中 `if i + 1 == 1` 分支只下载 `.ass` 文件，完全忽略了用户的 `export_srt` 和 `export_lrc` 设置。改为统一收集所有输出文件，按需打包 zip 或直接下载单文件。
+- **修复批量转录只下载最后一个文件的 bug**：循环内每次迭代开头的 `clear_output()` 会清除上一个文件的 `files.download()` 触发，导致浏览器来不及下载。将下载逻辑移到循环外，所有文件转录完成后统一打包为一个 zip 一次性下载。
 
 ### Bug 修复汇总
 
 | Bug | 文件 | 影响 | 修复方式 |
 |-----|------|------|----------|
 | 批量上传时第一个文件不导出 LRC/SRT | notebook Cell 8 | export_lrc=Yes 无效，用户被迫重新上传导致文件名出现 `(1)` | 移除 `if i + 1 == 1` 特殊分支，统一用 `download_files` 列表收集所有输出文件 |
+| 批量转录只下载最后一个文件 | notebook Cell 8 | 循环内 `clear_output()` 取消前一个文件的下载 | 将下载移到循环外，全部完成后统一打包 zip 下载 |
 
 ---
 
