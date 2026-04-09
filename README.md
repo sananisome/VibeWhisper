@@ -74,6 +74,9 @@ After split:
 
 ## Update history：
 
+2026.4.9:
+* Fix batch upload: first file now correctly exports LRC/SRT when enabled.
+
 2026.4.8:
 * Rebrand project to VibeWhisper. Separate srt2lrc module. Fix multiple bugs.
 
